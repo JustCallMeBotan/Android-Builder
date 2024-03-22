@@ -3,7 +3,7 @@
     "kernelSource": {
       "name": "chopin",
       "repo": "https://github.com/JustCallMeBotan/android_kernel_chopin",
-      "branch": "S2",
+      "branch": "test-r",
       "device": "chopin",
       "defconfig": "chopin_user_defconfig"
     },
