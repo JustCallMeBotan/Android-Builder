@@ -3,7 +3,7 @@
         "kernelSource": { 
             "name": "chopin-oss", 
             "repo": "https://github.com/JustCallMeBotan/kernel_xiaomi_mt6893-test.git", 
-            "branch": "lineage-23.0", 
+            "branch": "chopintest-ksu", 
             "device": "chopin", 
             "defconfig": "chopin_defconfig" 
           }, 
