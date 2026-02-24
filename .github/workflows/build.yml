@@ -307,7 +307,7 @@ jobs:
         working-directory: ${{ env.KERNEL_NAME }}
         if: ${{ env.ENABLE_KERNELSU == 'true' &&       env.ENABLE_KERNELSU_ExtPatch == 'true'}}
         run: |
-          wget -Opatcher https://github.com/luyanci/Android-kernel-utils/releases/download/v0.1/patcher-2204
+          wget -Opatcher https://github.com/luyanci/Android-kernel-utils/releases/download/v0.1.1/build-ubuntu-22.04.zip
           chmod +x patcher
           ./patcher
 
