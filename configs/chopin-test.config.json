@@ -3,7 +3,7 @@
         "kernelSource": { 
             "name": "chopin-ksu-oss", 
             "repo": "https://github.com/JustCallMeBotan/kernel_xiaomi_mt6893-test.git", 
-            "branch": "ksuchopin-test", 
+            "branch": "chopintest", 
             "device": "chopin", 
             "defconfig": "chopin_defconfig" 
           }, 
@@ -43,8 +43,8 @@
           },
           "KSU": {
             "enable": true,
-            "ExtPatch": false,
-            "Variant": "official"
+            "ExtPatch": true,
+            "Variant": "sukisu"
           },
           "enableLXC": false        
     }
