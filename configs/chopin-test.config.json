@@ -3,6 +3,57 @@
         "kernelSource": { 
             "name": "chopin-ksu-oss", 
             "repo": "https://github.com/JustCallMeBotan/kernel_xiaomi_mt6893-test.git", 
+            "branch": "chopintest-ksu", 
+            "device": "chopin", 
+            "defconfig": "chopin_defconfig" 
+          }, 
+          "toolchains": [ 
+            {  
+               "url": "https://github.com/ZyCromerZ/Clang/releases/download/17.0.0-20230725-release/Clang-17.0.0-20230725.tar.gz",  
+               "name": "clang",  
+               "binaryEnv": [
+                "bin"
+            ]  
+            } 
+          ], 
+          "enableCcache": true, 
+          "params": { 
+            "ARCH": "arm64", 
+            "CC": "clang/bin/clang", 
+            "externalCommands": { 
+              "CROSS_COMPILE": "aarch64-linux-gnu-", 
+              "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-", 
+              "AS": "clang/bin/llvm-as", 
+              "AR": "clang/bin/llvm-ar",  
+              "NM":"clang/bin/llvm-nm" ,  
+              "OBJCOPY":"clang/bin/llvm-objcopy",  
+              "OBJDUMP":"clang/bin/llvm-objdump",  
+              "STRIP":"clang/bin/llvm-strip",  
+              "LD":"clang/bin/ld.lld", 
+              "LTO": "thin" 
+            } 
+          }, 
+          "AnyKernel3": { 
+            "use": true, 
+            "release": true,
+            "custom": {
+              "repo": "https://github.com/JustCallMeBotan/AnyKernel33",
+              "branch": "chopin"
+            }
+          },
+          "KSU": {
+            "enable": true,
+            "ExtPatch": false,
+            "Variant": "official"
+          },
+          "enableLXC": false        
+    }
+]
+[
+    {
+        "kernelSource": { 
+            "name": "chopin-oss", 
+            "repo": "https://github.com/JustCallMeBotan/kernel_xiaomi_mt6893-test.git", 
             "branch": "chopintest", 
             "device": "chopin", 
             "defconfig": "chopin_defconfig" 
