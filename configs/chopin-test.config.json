@@ -93,8 +93,8 @@
             }
           },
           "KSU": {
-            "enable": true,
-            "ExtPatch": true,
+            "enable": false,
+            "ExtPatch": false,
             "Variant": "official"
           },
           "enableLXC": false        
