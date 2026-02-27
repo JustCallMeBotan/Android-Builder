@@ -259,7 +259,7 @@ jobs:
             echo "Using YCRKSU variant."
           elif [ "$input" == "sukisu" ]; then
             echo "KSU_VARIANT=SukiSU-Ultra/SukiSU-Ultra" >> $GITHUB_OUTPUT
-            echo "KSU_BRANCH=main" >> $GITHUB_OUTPUT
+            echo "KSU_BRANCH=builtin" >> $GITHUB_OUTPUT
           elif [ "$input" == "next" ] || [ "$input" == "ksun" ]; then
             echo "KSU_VARIANT=KernelSU-Next/KernelSU-Next" >> $GITHUB_OUTPUT
             echo "KSU_BRANCH=next" >> $GITHUB_OUTPUT
@@ -290,11 +290,7 @@ jobs:
           fi
 
           # Apply new KernelSU patches
-          if [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "SukiSU-Ultra/SukiSU-Ultra" ]; then
-            curl -LSs "https://raw.githubusercontent.com/${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}/${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}/kernel/setup.sh" | bash -s builtin
-          else
             curl -LSs "https://raw.githubusercontent.com/${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}/${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}/kernel/setup.sh" | bash -s ${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}
-          fi
 
           echo -e "CONFIG_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo -e "CONFIG_HAVE_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
