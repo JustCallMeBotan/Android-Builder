@@ -299,7 +299,10 @@ jobs:
           echo -e "CONFIG_HAVE_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo -e "CONFIG_KPROBE_EVENTS=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo -e "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
-          if [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "KernelSU-Next/KernelSU-Next" ] || [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "WildKernels/Wild_KSU" ]; then
+          if [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "ReSukiSU/ReSukiSU" ] ||; then
+            echo -e "CONFIG_KSU_MANUAL_HOOK_AUTO_INITRC_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
+            echo -e "CONFIG_KSU_MANUAL_HOOK_AUTO_SETUID_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
+          elif [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "KernelSU-Next/KernelSU-Next" ] || [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "WildKernels/Wild_KSU" ]; then
             echo -e "CONFIG_KSU_KPROBES_HOOK=n" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           else
             echo -e "CONFIG_KSU_MANUAL_HOOK=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
