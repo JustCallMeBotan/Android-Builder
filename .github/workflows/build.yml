@@ -268,6 +268,10 @@ jobs:
             echo "KSU_VARIANT=WildKernels/Wild_KSU" >> $GITHUB_OUTPUT
             echo "KSU_BRANCH=wild" >> $GITHUB_OUTPUT
             echo "Using WildSU variant."
+          elif [ "$input" == "resukisu" ]; then
+            echo "KSU_VARIANT=ReSukiSU/ReSukiSU" >> $GITHUB_OUTPUT
+            echo "KSU_BRANCH=main" >> $GITHUB_OUTPUT
+            echo "Using ReSukiSU variant."
           else
             # fallback to official
             echo "KSU_VARIANT=tiann/KernelSU" >> $GITHUB_OUTPUT
@@ -290,12 +294,8 @@ jobs:
           fi
 
           # Apply new KernelSU patches
-            curl -LSs "https://raw.githubusercontent.com/${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}/${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}/kernel/setup.sh" | bash -s ${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}
-          if [ "${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}" == "SukiSU-Ultra/SukiSU-Ultra" ]; then
-            echo -e "CONFIG_KPROBES=n" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
-          else
+          curl -LSs "https://raw.githubusercontent.com/${{ steps.determine-ksu-variant.outputs.KSU_VARIANT }}/${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}/kernel/setup.sh" | bash -s ${{ steps.determine-ksu-variant.outputs.KSU_BRANCH }}
           echo -e "CONFIG_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
-          fi
           echo -e "CONFIG_HAVE_KPROBES=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo -e "CONFIG_KPROBE_EVENTS=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
           echo -e "CONFIG_KSU=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_DEFCONFIG_PATH }}
