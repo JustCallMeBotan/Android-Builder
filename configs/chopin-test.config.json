@@ -44,7 +44,7 @@
           "KSU": {
             "enable": true,
             "ExtPatch": false,
-            "Variant": "resukisu"
+            "Variant": "rksu"
           },
           "enableLXC": false        
     }
