@@ -44,7 +44,7 @@
           "KSU": {
             "enable": true,
             "ExtPatch": false,
-            "Variant": "ksun"
+            "Variant": "next"
           },
           "enableLXC": false        
     }

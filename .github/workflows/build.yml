@@ -262,7 +262,7 @@ jobs:
             echo "KSU_BRANCH=builtin" >> $GITHUB_OUTPUT
           elif [ "$input" == "next" ] || [ "$input" == "ksun" ]; then
             echo "KSU_VARIANT=KernelSU-Next/KernelSU-Next" >> $GITHUB_OUTPUT
-            echo "KSU_BRANCH=next" >> $GITHUB_OUTPUT
+            echo "KSU_BRANCH=legacy-susfs" >> $GITHUB_OUTPUT
             echo "Using KernelSU-Next variant."
           elif [ "$input" == "wild" ]; then
             echo "KSU_VARIANT=WildKernels/Wild_KSU" >> $GITHUB_OUTPUT
